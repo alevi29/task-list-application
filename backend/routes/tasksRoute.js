@@ -49,6 +49,22 @@ router.get("/", async (request, response) => {
     }
 });
 
+router.get("/:id", async (request, response) => {
+    try {
+        const { id } = request.params;
+        const task = await Task.findById(id);
+        return response.status(200).json({
+            count: task.length,
+            data: task
+        });
+    }
+
+    catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
+
 // update a task
 router.put("/:id", async (request, response) => {
     try {
