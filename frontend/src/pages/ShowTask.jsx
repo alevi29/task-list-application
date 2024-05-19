@@ -16,12 +16,13 @@ const ShowTask = () => {
             .then((response) => {
                 setTask(response.data);
                 setLoading(false);
-                console.log(task);
             })
             .catch((error) => {
                 console.log(error);
                 setLoading(false);
             });
+
+        console.log(task);
 
     }, [])
 
@@ -38,27 +39,27 @@ const ShowTask = () => {
                             <div className="flex flex-col border-2 border-sky-400 w-fit p-4">
                                 <div className="my-4">
                                     <span className="text-xl mr-4 text-gray-500">ID</span>
-                                    <span>{task.data._id}</span>
+                                    <span>{task._id}</span>
                                 </div>
                                 <div className="my-4">
                                     <span className="text-xl mr-4 text-gray-500">Title</span>
-                                    <span>{task.data.title}</span>
+                                    <span>{task.title}</span>
                                 </div>
                                 <div className="my-4">
                                     <span className="text-xl mr-4 text-gray-500">Author</span>
-                                    <span>{task.data.author}</span>
+                                    <span>{task.author}</span>
                                 </div>
                                 <div className="my-4">
                                     <span className="text-xl mr-4 text-gray-500">Details</span>
-                                    <span>{task.data.body}</span>
+                                    <span>{task.body}</span>
                                 </div>
                                 <div className="my-4">
                                     <span className="text-xl mr-4 text-gray-500">Deadline</span>
-                                    <span>{task.data.deadline}</span>
+                                    <span>{task.deadline}</span>
                                 </div>
                                 <div className="my-4">
                                     <span className="text-xl mr-4 text-gray-500">Time Created</span>
-                                    <span>{new Date(task.data.createdAt).toString()}</span>
+                                    <span>{new Date(task.createdAt).toString()}</span>
                                 </div>
                             </div>
                         </div>
