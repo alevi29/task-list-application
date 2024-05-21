@@ -6,9 +6,26 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 
+const deleteAlert = () => {
+    if (confirm("Are you sure you want to delete this task?")) {
+        setLoading(true);
+        axios
+            .delete(`http://localhost:5555/${id}`)
+            .then(() => {
+                setLoading(false);
+                location.reload();
+            })
+            .catch((error) => {
+                setLoading(false);
+                console.log(error);
+            })
+    }
+}
+
 const Home = () => {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [id, setID] = useState("");
     useEffect(() => {
         setLoading(true);
         axios
@@ -22,6 +39,7 @@ const Home = () => {
                 setLoading(false);
             })
     }, []);
+
     return (
         <div className="p-4">
             <h1 className="text-center text-3xl my-8">

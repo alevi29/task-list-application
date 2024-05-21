@@ -21,9 +21,6 @@ const ShowTask = () => {
                 console.log(error);
                 setLoading(false);
             });
-
-        console.log(task);
-
     }, [])
 
     return (
